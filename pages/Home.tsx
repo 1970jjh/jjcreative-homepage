@@ -311,15 +311,15 @@ export const Home: React.FC = () => {
               <div className="relative z-10 h-full min-h-[280px] flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-jjorange font-bold text-sm">교육담당자 후기</span>
+                    <span className="text-jjorange font-bold text-lg">교육담당자 후기</span>
                     <div className="flex gap-0.5">
                       {[1, 2, 3, 4, 5].map((s) => (
-                        <Star key={s} size={14} fill="#F47C20" stroke="none" />
+                        <Star key={s} size={16} fill="#F47C20" stroke="none" />
                       ))}
                     </div>
                   </div>
                   <div key={currentReviewIndex} className="review-animate">
-                    <p className="text-white text-sm leading-relaxed mb-4 line-clamp-4">
+                    <p className="text-white text-base leading-relaxed mb-4 line-clamp-4">
                       "{educationReviews[currentReviewIndex].text}"
                     </p>
                   </div>
