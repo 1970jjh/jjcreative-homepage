@@ -10,9 +10,8 @@ const SYSTEM_PROMPT = `당신은 JJ Creative 교육연구소의 세일즈 전문
 
 ## 핵심 역할
 1) 사용자와 친근하고 편안한 스타일로 대화하며, 자연스럽게 JJ에 교육을 의뢰하도록 유도합니다.
-2) 교육 문의/제안 요청 시, 충분한 대화와 질문을 통해 니즈를 파악합니다.
-   - 파악할 정보: 회사명, 학습대상(직급/인원), 요청주제, 희망시간/일정 등
-3) 파악한 정보를 바탕으로 JJ CREATIVE만의 특장점을 살린 최적의 교육 프로그램을 설계하여 제시합니다.
+2) 사용자의 질문에 추가 질문을 하지 말고, 바로 JJ 프로그램 중 가장 적합한 교육 모듈들을 조합하여 제안하세요.
+3) 교육 예산에 대해서는 절대 묻지 마세요.
 4) 교육설계/제안 응답의 마지막에는 반드시 이 문구를 정확히 추가하세요:
    "👉 더 자세한 교육설계는 [[여기]](https://notebooklm.google.com/notebook/329d933e-d7b8-4981-94f3-b76bdd6142eb)를 클릭하세요."
 5) 사용자의 질문에 짧게 답하지 말고, 충분히 상세하게 답변하세요.
@@ -84,7 +83,7 @@ const SYSTEM_PROMPT = `당신은 JJ Creative 교육연구소의 세일즈 전문
 
 ## 대화 스타일
 - 친근하고 편안하게, 하지만 전문성 있게
-- 먼저 질문하여 고객 니즈를 충분히 파악
+- 추가 질문 없이 바로 최적의 프로그램 조합을 제안
 - 교육 프로그램 제안 시 JJ만의 특장점 강조
 - 상세하고 충실한 답변 제공`;
 
@@ -94,7 +93,7 @@ export const AIChatbot: React.FC = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -105,10 +104,18 @@ export const AIChatbot: React.FC = () => {
   }, [messages]);
 
   useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus();
+    if (isOpen && textareaRef.current) {
+      textareaRef.current.focus();
     }
   }, [isOpen]);
+
+  // Auto-resize textarea
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = Math.min(textareaRef.current.scrollHeight, 120) + 'px';
+    }
+  }, [input]);
 
   // Initial greeting when chat opens
   useEffect(() => {
@@ -125,6 +132,9 @@ export const AIChatbot: React.FC = () => {
 
     const userMessage = input.trim();
     setInput('');
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+    }
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
     setIsLoading(true);
 
@@ -183,11 +193,12 @@ export const AIChatbot: React.FC = () => {
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
     }
+    // Shift+Enter allows new line (default behavior)
   };
 
   // Parse [[text]](url) pattern and render as clickable links
@@ -316,21 +327,22 @@ export const AIChatbot: React.FC = () => {
 
           {/* Input */}
           <div className="p-4 bg-white border-t border-gray-100">
-            <div className="flex gap-2">
-              <input
-                ref={inputRef}
-                type="text"
+            <div className="flex gap-2 items-end">
+              <textarea
+                ref={textareaRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="메시지를 입력하세요..."
-                className="flex-1 px-4 py-3 bg-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all"
+                onKeyDown={handleKeyDown}
+                placeholder="메시지를 입력하세요... (Shift+Enter: 줄바꿈)"
+                rows={1}
+                className="flex-1 px-4 py-3 bg-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all resize-none overflow-hidden"
                 disabled={isLoading}
+                style={{ minHeight: '44px', maxHeight: '120px' }}
               />
               <button
                 onClick={sendMessage}
                 disabled={!input.trim() || isLoading}
-                className="px-4 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
               >
                 <Send size={18} />
               </button>
