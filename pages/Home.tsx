@@ -139,31 +139,18 @@ export const Home: React.FC = () => {
               </a>
             </div>
 
-            {/* Card 2 - Person Testimonial */}
-            <div className="bg-gray-100 rounded-3xl overflow-hidden relative group hover:scale-[1.02] transition-transform duration-300">
-              <img
-                src={testimonials[0].image}
-                alt={testimonials[0].author}
-                className="w-full h-full object-cover absolute inset-0"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-              <div className="relative z-10 h-full min-h-[320px] flex flex-col justify-end p-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-white font-bold">{testimonials[0].author}</span>
-                  <span className="text-white/60 text-sm">{testimonials[0].position}</span>
-                </div>
-                <div className="bg-white/10 backdrop-blur-md rounded-xl px-3 py-1 inline-flex items-center gap-2 w-fit">
-                  <span className="text-white text-sm font-medium">{testimonials[0].company}</span>
-                </div>
+            {/* Card 2 - YouTube Video */}
+            <div className="bg-black rounded-3xl overflow-hidden relative group hover:scale-[1.02] transition-transform duration-300">
+              <div className="w-full h-full min-h-[320px]">
+                <iframe
+                  src="https://www.youtube.com/embed/g7vOJc3t5_s"
+                  title="JJ Creative 소개 영상"
+                  className="w-full h-full min-h-[320px]"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
-              <a
-                href="https://blog.naver.com/wofyrhd"
-                target="_blank"
-                rel="noreferrer"
-                className="absolute bottom-6 right-6 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
-              >
-                <Plus size={20} className="text-white/80" />
-              </a>
             </div>
 
             {/* Card 3 - Program Guide GIF */}
