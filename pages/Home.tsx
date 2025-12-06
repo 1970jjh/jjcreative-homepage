@@ -70,7 +70,7 @@ const reviews = [
   { text: "전사 워크숍 프로그램, 모든 직원이 만족한 최고의 행사였습니다.", author: "교육 담당자", company: "L사" },
 ];
 
-const PROGRAM_IMAGE_URL = "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1program.jpg";
+const PROGRAM_GIF_URL = "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1page.gif";
 
 export const Home: React.FC = () => {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
@@ -167,7 +167,7 @@ export const Home: React.FC = () => {
 
             {/* Card 3 - Program Guide GIF */}
             <div
-              className="bg-gradient-to-br from-amber-100 via-orange-100 to-yellow-50 rounded-3xl p-4 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300 row-span-1 lg:row-span-2 cursor-pointer"
+              className="bg-gradient-to-br from-amber-100 via-orange-100 to-yellow-50 rounded-3xl p-4 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300 row-span-1 lg:row-span-3 cursor-pointer"
               onClick={() => setIsImageModalOpen(true)}
             >
               <div className="flex items-center justify-between mb-3">
@@ -187,7 +187,7 @@ export const Home: React.FC = () => {
                 onClick={(e) => e.stopPropagation()}
               >
                 <img
-                  src={PROGRAM_IMAGE_URL}
+                  src={PROGRAM_GIF_URL}
                   alt="JJ Creative 프로그램 안내서"
                   className="w-full h-auto"
                   onClick={() => setIsImageModalOpen(true)}
@@ -470,7 +470,7 @@ export const Home: React.FC = () => {
             {/* Image Viewer */}
             <div className="w-full h-[calc(100%-72px)] overflow-auto p-4 bg-gray-100">
               <img
-                src={PROGRAM_IMAGE_URL}
+                src={PROGRAM_GIF_URL}
                 alt="JJ Creative 프로그램 안내서"
                 className="w-full h-auto max-w-4xl mx-auto"
               />
