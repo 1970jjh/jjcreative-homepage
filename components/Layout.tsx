@@ -12,6 +12,8 @@ const navItems: NavItem[] = [
   { label: 'People', path: '/people' },
   { label: 'Programs', path: '/programs' },
   { label: 'Infographic', path: '/infographic' },
+  { label: 'AI Agent', path: '/ai-agent' },
+  { label: 'Reference', path: '/reference' },
   { label: 'Contact', path: '/contact' },
 ];
 
@@ -67,6 +69,8 @@ export const Layout: React.FC = () => {
       { title: 'People', subtitle: 'Instructors & Experts', path: '/people', type: 'PAGE' },
       { title: 'Programs', subtitle: 'Curriculum', path: '/programs', type: 'PAGE' },
       { title: 'Infographic', subtitle: 'Program Overview', path: '/infographic', type: 'PAGE' },
+      { title: 'AI Agent', subtitle: 'AI Agent Apps', path: '/ai-agent', type: 'PAGE' },
+      { title: 'Reference', subtitle: 'Client References', path: '/reference', type: 'PAGE' },
       { title: 'Contact', subtitle: 'Get in Touch', path: '/contact', type: 'PAGE' },
     ];
     
@@ -404,6 +408,32 @@ export const Layout: React.FC = () => {
                 </NavLink>
               </div>
 
+              {/* AI Agent */}
+              <div className="bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl p-6 text-white">
+                <h3 className="text-lg font-bold mb-2">AI Agent</h3>
+                <p className="text-white/80 text-sm mb-4">AI 에이전트 앱 소개</p>
+                <NavLink
+                  to="/ai-agent"
+                  onClick={() => setIsSitemapOpen(false)}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-jjorange transition-colors"
+                >
+                  바로가기 <ExternalLink size={14} />
+                </NavLink>
+              </div>
+
+              {/* Reference */}
+              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <h3 className="text-lg font-bold text-jjnavy mb-2">Reference</h3>
+                <p className="text-gray-500 text-sm mb-4">고객사 및 교육 후기</p>
+                <NavLink
+                  to="/reference"
+                  onClick={() => setIsSitemapOpen(false)}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-jjorange hover:text-jjnavy transition-colors"
+                >
+                  바로가기 <ExternalLink size={14} />
+                </NavLink>
+              </div>
+
               {/* Contact */}
               <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
                 <h3 className="text-lg font-bold text-jjnavy mb-2">Contact</h3>
@@ -512,6 +542,8 @@ export const Layout: React.FC = () => {
                 <li><NavLink to="/people" className="hover:text-white transition-colors">강사진 소개</NavLink></li>
                 <li><NavLink to="/programs" className="hover:text-white transition-colors">교육 프로그램</NavLink></li>
                 <li><NavLink to="/infographic" className="hover:text-white transition-colors">인포그래픽</NavLink></li>
+                <li><NavLink to="/ai-agent" className="hover:text-white transition-colors">AI Agent</NavLink></li>
+                <li><NavLink to="/reference" className="hover:text-white transition-colors">Reference</NavLink></li>
                 <li><NavLink to="/contact" className="hover:text-white transition-colors">문의하기</NavLink></li>
               </ul>
             </div>
