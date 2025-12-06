@@ -13,8 +13,8 @@ const SYSTEM_PROMPT = `당신은 JJ Creative 교육연구소의 세일즈 전문
 2) 교육 문의/제안 요청 시, 충분한 대화와 질문을 통해 니즈를 파악합니다.
    - 파악할 정보: 회사명, 학습대상(직급/인원), 요청주제, 희망시간/일정 등
 3) 파악한 정보를 바탕으로 JJ CREATIVE만의 특장점을 살린 최적의 교육 프로그램을 설계하여 제시합니다.
-4) 교육설계/제안 응답의 마지막에는 반드시 이 문구를 추가하세요:
-   "👉 더 자세한 교육설계는 여기를 클릭하세요: https://notebooklm.google.com/notebook/329d933e-d7b8-4981-94f3-b76bdd6142eb"
+4) 교육설계/제안 응답의 마지막에는 반드시 이 문구를 정확히 추가하세요:
+   "👉 더 자세한 교육설계는 [[여기]](https://notebooklm.google.com/notebook/329d933e-d7b8-4981-94f3-b76bdd6142eb)를 클릭하세요."
 5) 사용자의 질문에 짧게 답하지 말고, 충분히 상세하게 답변하세요.
 6) 연락처/문의처를 묻는 경우: 전재현 대표 연락처와 이메일을 함께 안내하세요.
    - 휴대폰: 010-8448-2354
@@ -190,6 +190,41 @@ export const AIChatbot: React.FC = () => {
     }
   };
 
+  // Parse [[text]](url) pattern and render as clickable links
+  const renderMessageContent = (content: string) => {
+    const linkPattern = /\[\[([^\]]+)\]\]\(([^)]+)\)/g;
+    const parts: (string | JSX.Element)[] = [];
+    let lastIndex = 0;
+    let match;
+
+    while ((match = linkPattern.exec(content)) !== null) {
+      // Add text before the link
+      if (match.index > lastIndex) {
+        parts.push(content.slice(lastIndex, match.index));
+      }
+      // Add the link element
+      parts.push(
+        <a
+          key={match.index}
+          href={match[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-600 hover:text-purple-800 underline font-medium"
+        >
+          {match[1]}
+        </a>
+      );
+      lastIndex = match.index + match[0].length;
+    }
+
+    // Add remaining text after last link
+    if (lastIndex < content.length) {
+      parts.push(content.slice(lastIndex));
+    }
+
+    return parts.length > 0 ? parts : content;
+  };
+
   return (
     <>
       {/* Chat Button - Right Bottom */}
@@ -256,7 +291,7 @@ export const AIChatbot: React.FC = () => {
                     ? 'bg-jjnavy text-white rounded-tr-none'
                     : 'bg-white text-gray-700 rounded-tl-none shadow-sm border border-gray-100'
                 }`}>
-                  {message.content}
+                  {message.role === 'assistant' ? renderMessageContent(message.content) : message.content}
                 </div>
               </div>
             ))}
