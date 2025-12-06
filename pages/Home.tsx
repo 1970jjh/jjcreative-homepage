@@ -172,7 +172,7 @@ export const Home: React.FC = () => {
               onClick={() => setIsImageModalOpen(true)}
             >
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-amber-900 font-bold text-sm">한 눈으로 보는 기업교육 프로그램</h3>
+                <h3 className="text-amber-900 font-bold text-base whitespace-nowrap">한 눈으로 보는 기업교육 프로그램</h3>
                 <button
                   className="w-8 h-8 bg-white/60 hover:bg-white/80 rounded-lg flex items-center justify-center transition-colors"
                   onClick={(e) => {
