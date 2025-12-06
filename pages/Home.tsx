@@ -167,7 +167,7 @@ export const Home: React.FC = () => {
 
             {/* Card 3 - Program Guide GIF */}
             <div
-              className="bg-gradient-to-br from-amber-100 via-orange-100 to-yellow-50 rounded-3xl p-4 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300 row-span-1 lg:row-span-3 cursor-pointer"
+              className="bg-gradient-to-br from-amber-100 via-orange-100 to-yellow-50 rounded-3xl p-4 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300 row-span-1 lg:row-span-2 cursor-pointer"
               onClick={() => setIsImageModalOpen(true)}
             >
               <div className="flex items-center justify-between mb-3">
@@ -186,7 +186,7 @@ export const Home: React.FC = () => {
                 <img
                   src={PROGRAM_IMAGE_URL}
                   alt="JJ Creative 프로그램 안내서"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
               <div className="absolute bottom-3 left-0 right-0 text-center">
