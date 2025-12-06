@@ -8,18 +8,41 @@ export const About: React.FC = () => {
       {/* Header */}
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center">
         <div className="absolute inset-0">
-          <img 
-            src="https://picsum.photos/seed/teamwork_office/1920/800" 
-            alt="Office Team" 
+          <img
+            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1920&q=80"
+            alt="AI Corporate Training"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-jjnavy/80"></div>
+          <div className="absolute inset-0 bg-black/70"></div>
         </div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">교육으로 가치를 더하다</h1>
           <p className="text-xl text-gray-200 max-w-2xl mx-auto">
             사람과 조직의 성장을 돕는 진정한 파트너, JJ Creative 교육연구소입니다.
           </p>
+        </div>
+      </section>
+
+      {/* Vision & Mission */}
+      <section className="py-20 bg-gray-900 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80"
+            alt="Team collaboration with AI"
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-cyan-400 mb-12">Vision & Mission</h2>
+          <p className="text-4xl md:text-5xl font-bold text-white mb-10">
+            "기업교육 with AI"
+          </p>
+          <div className="text-lg md:text-xl text-gray-200 leading-relaxed space-y-2">
+            <p>JJ Creative 교육연구소는</p>
+            <p>AI / 게이미피케이션/시뮬레이션 기반의 교육을 통해</p>
+            <p>기업 조직의 실행력과 성과를 높이는</p>
+            <p className="font-bold text-white">혁신적인 기업 교육 파트너입니다</p>
+          </div>
         </div>
       </section>
 
