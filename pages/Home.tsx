@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { BarChart3, Users, Gamepad2, CheckCircle, ArrowRight, Star, MonitorPlay, MessageCircle, FileText } from 'lucide-react';
+import { BarChart3, Users, Gamepad2, CheckCircle, ArrowRight, Star, MonitorPlay, MessageCircle, FileText, Plus, Sparkles, Target, Zap } from 'lucide-react';
 import { Feature, Stat } from '../types';
 
 const features: Feature[] = [
@@ -29,6 +29,30 @@ const stats: Stat[] = [
   { value: "50,000+", label: "누적 교육생" },
   { value: "120+", label: "파트너 기업" },
   { value: "4.9", label: "교육 만족도 (5.0 만점)" }
+];
+
+const testimonials = [
+  {
+    text: "AI 툴을 활용한 교육 덕분에 팀 전체의 업무 생산성이 크게 향상되었습니다. 실무에 바로 적용할 수 있는 점이 좋았어요.",
+    author: "김민수",
+    position: "마케팅팀 팀장",
+    company: "삼성전자",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    text: "게이미피케이션 기반 팀빌딩은 정말 신선했습니다. 참여도가 높아 팀 분위기가 확 바뀌었어요.",
+    author: "이지현",
+    position: "HR 매니저",
+    company: "LG전자",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    text: "리더십 교육을 통해 팀원들과 소통하는 법을 새로 배웠습니다. 실전 시뮬레이션이 큰 도움이 되었습니다.",
+    author: "박준호",
+    position: "개발팀 팀장",
+    company: "카카오",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80"
+  },
 ];
 
 const reviews = [
@@ -62,53 +86,214 @@ export const Home: React.FC = () => {
         }
       `}</style>
 
-      {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1528605105345-5344ea20e269?auto=format&fit=crop&q=80&w=800" 
-            alt="Corporate Education AI Office" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-jjnavy/70 mix-blend-multiply"></div>
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in-up">
-            조직의 잠재력을 깨우는<br/>
-            <span className="text-jjorange">창의적 러닝 솔루션</span>
-          </h1>
-          <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
-            JJ Creative 교육연구소는 이론을 넘어 현업의 문제를 해결하는 실전형 기업 교육을 설계합니다. 변화는 여기서 시작됩니다.
-          </p>
-          
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8">
-            <a 
-              href="https://blog.naver.com/wofyrhd" 
-              target="_blank" 
+      {/* Bento Grid Hero Section */}
+      <section className="pt-24 pb-12 bg-gradient-to-b from-slate-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Main Title */}
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-jjnavy mb-6 leading-tight">
+              조직의 잠재력을 깨우는<br/>
+              <span className="text-jjorange">창의적 러닝 솔루션</span>
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              JJ Creative 교육연구소는 이론을 넘어 현업의 문제를 해결하는 실전형 기업 교육을 설계합니다.
+            </p>
+          </div>
+
+          {/* Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+
+            {/* Card 1 - Stats Card (Large) */}
+            <div className="bg-jjnavy rounded-3xl p-8 text-white relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-jjorange/20 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+              <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-6">
+                  <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center">
+                    <Sparkles className="text-jjorange" size={20} />
+                  </div>
+                  <span className="text-white/60 text-sm font-medium">JJ Creative</span>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <div className="text-4xl font-bold text-jjorange">50,000+</div>
+                    <div className="text-white/60 text-sm">누적 교육생</div>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-bold text-white">120+</div>
+                    <div className="text-white/60 text-sm">파트너 기업</div>
+                  </div>
+                </div>
+              </div>
+              <a
+                href="https://blog.naver.com/wofyrhd"
+                target="_blank"
+                rel="noreferrer"
+                className="absolute bottom-6 right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+              >
+                <Plus size={20} className="text-white/60" />
+              </a>
+            </div>
+
+            {/* Card 2 - Person Testimonial */}
+            <div className="bg-gray-100 rounded-3xl overflow-hidden relative group hover:scale-[1.02] transition-transform duration-300">
+              <img
+                src={testimonials[0].image}
+                alt={testimonials[0].author}
+                className="w-full h-full object-cover absolute inset-0"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <div className="relative z-10 h-full min-h-[320px] flex flex-col justify-end p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-white font-bold">{testimonials[0].author}</span>
+                  <span className="text-white/60 text-sm">{testimonials[0].position}</span>
+                </div>
+                <div className="bg-white/10 backdrop-blur-md rounded-xl px-3 py-1 inline-flex items-center gap-2 w-fit">
+                  <span className="text-white text-sm font-medium">{testimonials[0].company}</span>
+                </div>
+              </div>
+              <a
+                href="https://blog.naver.com/wofyrhd"
+                target="_blank"
+                rel="noreferrer"
+                className="absolute bottom-6 right-6 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+              >
+                <Plus size={20} className="text-white/80" />
+              </a>
+            </div>
+
+            {/* Card 3 - Quote Card with gradient background */}
+            <div className="bg-gradient-to-br from-amber-200 via-orange-200 to-yellow-100 rounded-3xl p-6 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300 row-span-1 lg:row-span-2">
+              <div className="absolute top-4 right-4 flex items-center gap-2">
+                <span className="text-amber-900/60 text-sm font-medium">{testimonials[0].author}</span>
+                <span className="text-amber-900/40 text-xs">{testimonials[0].position}, {testimonials[0].company}</span>
+              </div>
+              <div className="absolute top-4 right-4">
+                <div className="w-12 h-12 bg-white/40 rounded-xl flex items-center justify-center">
+                  <span className="text-amber-900 font-bold text-lg">JJ</span>
+                </div>
+              </div>
+              <div className="mt-16 lg:mt-24">
+                <p className="text-xl lg:text-2xl font-medium text-amber-900 leading-relaxed">
+                  "{testimonials[0].text}"
+                </p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-amber-300/50 to-transparent"></div>
+            </div>
+
+            {/* Card 4 - Feature Card (Stripe style) */}
+            <div className="bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 rounded-3xl p-6 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300 lg:col-span-2">
+              <div className="absolute inset-0 opacity-30">
+                <img
+                  src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?auto=format&fit=crop&w=800&q=80"
+                  alt="Background"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-white/80 text-sm font-medium">{testimonials[1].author} · {testimonials[1].position}</span>
+                  <div className="bg-white/20 backdrop-blur-md rounded-lg px-3 py-1">
+                    <span className="text-white font-bold text-sm">{testimonials[1].company}</span>
+                  </div>
+                </div>
+                <p className="text-xl md:text-2xl font-medium text-white leading-relaxed max-w-xl">
+                  "{testimonials[1].text}"
+                </p>
+              </div>
+              <a
+                href="https://notebooklm.google.com/notebook/329d933e-d7b8-4981-94f3-b76bdd6142eb"
+                target="_blank"
+                rel="noreferrer"
+                className="absolute bottom-6 right-6 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+              >
+                <Plus size={20} className="text-white/80" />
+              </a>
+            </div>
+
+            {/* Card 5 - Dark Feature Card */}
+            <div className="bg-zinc-900 rounded-3xl p-6 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
+              <div className="relative z-10 h-full min-h-[200px] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Target className="text-jjorange" size={24} />
+                    <span className="text-white font-bold">맞춤형 교육 설계</span>
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    AI 기반 조직 진단으로 100% 커스터마이징된 교육 솔루션을 제공합니다.
+                  </p>
+                </div>
+                <div className="flex items-center justify-between mt-6">
+                  <span className="text-3xl font-bold text-white">4.9<span className="text-lg text-gray-500">/5.0</span></span>
+                  <span className="text-gray-500 text-sm">교육 만족도</span>
+                </div>
+              </div>
+              <a
+                href="https://form.naver.com/response/S1p9qf7_I9qBZ96COOdSzA"
+                target="_blank"
+                rel="noreferrer"
+                className="absolute bottom-6 right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+              >
+                <Plus size={20} className="text-white/60" />
+              </a>
+            </div>
+
+            {/* Card 6 - Person Card 2 */}
+            <div className="bg-gray-200 rounded-3xl overflow-hidden relative group hover:scale-[1.02] transition-transform duration-300">
+              <img
+                src={testimonials[2].image}
+                alt={testimonials[2].author}
+                className="w-full h-full object-cover absolute inset-0"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div className="relative z-10 h-full min-h-[280px] flex flex-col justify-end p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-white font-bold">{testimonials[2].author}</span>
+                  <span className="text-white/60 text-sm">{testimonials[2].position}</span>
+                </div>
+                <div className="bg-white/10 backdrop-blur-md rounded-xl px-3 py-1 inline-flex items-center gap-2 w-fit">
+                  <span className="text-white text-sm font-medium">{testimonials[2].company}</span>
+                </div>
+              </div>
+              <a
+                href="https://blog.naver.com/wofyrhd"
+                target="_blank"
+                rel="noreferrer"
+                className="absolute bottom-6 right-6 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+              >
+                <Plus size={20} className="text-white/80" />
+              </a>
+            </div>
+
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
+            <a
+              href="https://blog.naver.com/wofyrhd"
+              target="_blank"
               rel="noreferrer"
-              className="px-6 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2 w-full md:w-auto hover:-translate-y-1"
+              className="px-8 py-4 bg-jjnavy hover:bg-jjnavy/90 text-white rounded-2xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-3 w-full sm:w-auto hover:-translate-y-1 hover:shadow-xl"
             >
               <MonitorPlay className="w-5 h-5" />
               리얼 교육장면 보기
             </a>
-            <a 
-              href="https://notebooklm.google.com/notebook/329d933e-d7b8-4981-94f3-b76bdd6142eb" 
-              target="_blank" 
+            <a
+              href="https://notebooklm.google.com/notebook/329d933e-d7b8-4981-94f3-b76bdd6142eb"
+              target="_blank"
               rel="noreferrer"
-              className="px-6 py-4 bg-purple-600 hover:bg-purple-500 text-white rounded-xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2 w-full md:w-auto hover:-translate-y-1"
+              className="px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white rounded-2xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-3 w-full sm:w-auto hover:-translate-y-1 hover:shadow-xl"
             >
               <MessageCircle className="w-5 h-5" />
-              JJ 교육 챗봇 질문하기
+              JJ 교육 챗봇
             </a>
-            <a 
-              href="https://form.naver.com/response/S1p9qf7_I9qBZ96COOdSzA" 
-              target="_blank" 
+            <a
+              href="https://form.naver.com/response/S1p9qf7_I9qBZ96COOdSzA"
+              target="_blank"
               rel="noreferrer"
-              className="px-6 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/30 rounded-xl font-bold text-lg transition-all backdrop-blur-md flex items-center justify-center gap-2 w-full md:w-auto hover:-translate-y-1"
+              className="px-8 py-4 bg-jjorange hover:bg-jjorange/90 text-white rounded-2xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-3 w-full sm:w-auto hover:-translate-y-1 hover:shadow-xl"
             >
               <FileText className="w-5 h-5" />
-              교육 제안서 의뢰 하기
+              제안서 의뢰
             </a>
           </div>
         </div>
