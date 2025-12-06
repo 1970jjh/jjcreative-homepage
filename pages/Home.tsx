@@ -70,7 +70,7 @@ const reviews = [
   { text: "전사 워크숍 프로그램, 모든 직원이 만족한 최고의 행사였습니다.", author: "교육 담당자", company: "L사" },
 ];
 
-const GIF_URL = "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1page.gif";
+const PROGRAM_IMAGE_URL = "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1program.jpg";
 
 export const Home: React.FC = () => {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
@@ -184,7 +184,7 @@ export const Home: React.FC = () => {
               </div>
               <div className="relative w-full h-[calc(100%-40px)] bg-white rounded-2xl overflow-hidden shadow-inner">
                 <img
-                  src={GIF_URL}
+                  src={PROGRAM_IMAGE_URL}
                   alt="JJ Creative 프로그램 안내서"
                   className="w-full h-full object-contain"
                 />
@@ -466,7 +466,7 @@ export const Home: React.FC = () => {
             {/* Image Viewer */}
             <div className="w-full h-[calc(100%-72px)] overflow-auto p-4 bg-gray-100">
               <img
-                src={GIF_URL}
+                src={PROGRAM_IMAGE_URL}
                 alt="JJ Creative 프로그램 안내서"
                 className="w-full h-auto max-w-4xl mx-auto"
               />

@@ -10,7 +10,12 @@ const INFOGRAPHIC_IMAGES = [
   {
     url: "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/%5B%EC%A0%9C%EC%95%88%EC%84%9C%5D%20%ED%95%9C%EC%9E%A5%EC%9C%BC%EB%A1%9C%20%EB%B3%B4%EB%8A%94%202026%20JJ%20Creative%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%86%8C%20%EB%8C%80%ED%91%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8/withAI.PNG",
     title: "AI 활용 교육"
-  }
+  },
+  // 1P 폴더 이미지 (3.PNG ~ 22.PNG)
+  ...Array.from({ length: 20 }, (_, i) => ({
+    url: `https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1P/${i + 3}.PNG`,
+    title: `프로그램 상세 ${i + 1}`
+  }))
 ];
 
 export const Infographic: React.FC = () => {
