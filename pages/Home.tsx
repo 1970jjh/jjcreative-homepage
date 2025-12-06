@@ -70,7 +70,7 @@ const reviews = [
   { text: "전사 워크숍 프로그램, 모든 직원이 만족한 최고의 행사였습니다.", author: "교육 담당자", company: "L사" },
 ];
 
-const PROGRAM_GIF_URL = "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1page.gif";
+const PROGRAM_GIF_URL = "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1gif.gif";
 const PROGRAM_POPUP_URL = "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1program.jpg";
 
 export const Home: React.FC = () => {
