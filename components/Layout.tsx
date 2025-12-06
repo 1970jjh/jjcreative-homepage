@@ -4,6 +4,7 @@ import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Phone, Mail, MapPin, ExternalLink, Search, LayoutGrid } from 'lucide-react';
 import { NavItem } from '../types';
 import { programs } from '../data/programsData';
+import { AIChatbot } from './AIChatbot';
 
 const navItems: NavItem[] = [
   { label: 'Home', path: '/' },
@@ -96,25 +97,25 @@ export const Layout: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col font-sans text-slate-900">
       {/* Navigation Bar */}
-      <header 
+      <header
         className={`fixed w-full z-50 transition-all duration-300 ${
-          isScrolled || !isHome 
-            ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' 
-            : 'bg-transparent py-6'
+          isScrolled || !isHome
+            ? 'bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 backdrop-blur-md shadow-lg py-3'
+            : 'bg-gradient-to-r from-slate-900/80 via-slate-800/80 to-slate-900/80 backdrop-blur-sm py-6'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             {/* Logo */}
             <NavLink to="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 bg-jjnavy rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-jjnavy/50 transition-all">
+              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-jjnavy font-bold text-xl shadow-lg group-hover:shadow-white/30 transition-all">
                 JJ
               </div>
               <div className="flex flex-col">
-                <span className={`font-bold text-lg leading-tight transition-colors ${isScrolled || !isHome ? 'text-jjnavy' : 'text-white'}`}>
+                <span className="font-bold text-lg leading-tight text-white">
                   JJ Creative
                 </span>
-                <span className={`text-[10px] font-bold tracking-widest uppercase transition-colors ${isScrolled || !isHome ? 'text-jjorange' : 'text-white/80'}`}>
+                <span className="text-[10px] font-bold tracking-widest uppercase text-jjorange">
                   Education Lab
                 </span>
               </div>
@@ -126,26 +127,22 @@ export const Layout: React.FC = () => {
                 <NavLink
                   key={item.label}
                   to={item.path}
-                  className={({ isActive }) => 
+                  className={({ isActive }) =>
                     `text-sm font-bold transition-all hover:-translate-y-0.5 ${
-                      isActive 
-                        ? 'text-jjorange' 
-                        : (isScrolled || !isHome ? 'text-slate-600 hover:text-jjnavy' : 'text-white/90 hover:text-white')
+                      isActive
+                        ? 'text-jjorange'
+                        : 'text-white/80 hover:text-white'
                     }`
                   }
                 >
                   {item.label}
                 </NavLink>
               ))}
-              
+
               {/* Search Icon (Desktop) */}
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className={`p-2 rounded-full transition-colors ${
-                  isScrolled || !isHome
-                    ? 'text-slate-600 hover:text-jjnavy hover:bg-slate-100'
-                    : 'text-white/90 hover:text-white hover:bg-white/10'
-                }`}
+                className="p-2 rounded-full transition-colors text-white/80 hover:text-white hover:bg-white/10"
                 aria-label="Search"
               >
                 <Search size={20} />
@@ -154,11 +151,7 @@ export const Layout: React.FC = () => {
               {/* Sitemap Icon (Desktop) */}
               <button
                 onClick={() => setIsSitemapOpen(true)}
-                className={`p-2 rounded-full transition-colors ${
-                  isScrolled || !isHome
-                    ? 'text-slate-600 hover:text-jjnavy hover:bg-slate-100'
-                    : 'text-white/90 hover:text-white hover:bg-white/10'
-                }`}
+                className="p-2 rounded-full transition-colors text-white/80 hover:text-white hover:bg-white/10"
                 aria-label="Sitemap"
               >
                 <LayoutGrid size={20} />
@@ -169,20 +162,20 @@ export const Layout: React.FC = () => {
             <div className="flex md:hidden items-center gap-2">
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className={`p-2 ${isScrolled || !isHome ? 'text-slate-900' : 'text-white'}`}
+                className="p-2 text-white/80 hover:text-white"
                 aria-label="Search"
               >
                 <Search size={24} />
               </button>
               <button
                 onClick={() => setIsSitemapOpen(true)}
-                className={`p-2 ${isScrolled || !isHome ? 'text-slate-900' : 'text-white'}`}
+                className="p-2 text-white/80 hover:text-white"
                 aria-label="Sitemap"
               >
                 <LayoutGrid size={24} />
               </button>
               <button
-                className={`p-2 ${isScrolled || !isHome ? 'text-slate-900' : 'text-white'}`}
+                className="p-2 text-white/80 hover:text-white"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 {isMobileMenuOpen ? <X /> : <Menu />}
@@ -534,6 +527,9 @@ export const Layout: React.FC = () => {
           </div>
         </div>
       </footer>
+
+      {/* AI Chatbot */}
+      <AIChatbot />
     </div>
   );
 };
