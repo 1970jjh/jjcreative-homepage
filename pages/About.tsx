@@ -24,24 +24,17 @@ export const About: React.FC = () => {
       </section>
 
       {/* Vision & Mission */}
-      <section className="py-20 bg-gray-900 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80"
-            alt="Team collaboration with AI"
-            className="w-full h-full object-cover opacity-20"
-          />
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-cyan-400 mb-12">Vision & Mission</h2>
-          <p className="text-4xl md:text-5xl font-bold text-white mb-10">
+      <section className="py-20 bg-amber-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-cyan-600 mb-12">Vision & Mission</h2>
+          <p className="text-4xl md:text-5xl font-bold text-jjnavy mb-10">
             "기업교육 with AI"
           </p>
-          <div className="text-lg md:text-xl text-gray-200 leading-relaxed space-y-2">
+          <div className="text-lg md:text-xl text-gray-700 leading-relaxed space-y-2">
             <p>JJ Creative 교육연구소는</p>
             <p>AI / 게이미피케이션/시뮬레이션 기반의 교육을 통해</p>
             <p>기업 조직의 실행력과 성과를 높이는</p>
-            <p className="font-bold text-white">혁신적인 기업 교육 파트너입니다</p>
+            <p className="font-bold text-jjnavy">혁신적인 기업 교육 파트너입니다</p>
           </div>
         </div>
       </section>
