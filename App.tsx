@@ -6,6 +6,8 @@ import { About } from './pages/About';
 import { People } from './pages/People';
 import { Programs } from './pages/Programs';
 import { Infographic } from './pages/Infographic';
+import { AIAgent } from './pages/AIAgent';
+import { Reference } from './pages/Reference';
 import { Contact } from './pages/Contact';
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
           <Route path="people" element={<People />} />
           <Route path="programs" element={<Programs />} />
           <Route path="infographic" element={<Infographic />} />
+          <Route path="ai-agent" element={<AIAgent />} />
+          <Route path="reference" element={<Reference />} />
           <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>
