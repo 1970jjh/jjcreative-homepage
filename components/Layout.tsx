@@ -11,6 +11,7 @@ const navItems: NavItem[] = [
   { label: 'Company', path: '/about' },
   { label: 'People', path: '/people' },
   { label: 'Programs', path: '/programs' },
+  { label: 'Infographic', path: '/infographic' },
   { label: 'Contact', path: '/contact' },
 ];
 
@@ -65,6 +66,7 @@ export const Layout: React.FC = () => {
       { title: 'Company', subtitle: 'About Us', path: '/about', type: 'PAGE' },
       { title: 'People', subtitle: 'Instructors & Experts', path: '/people', type: 'PAGE' },
       { title: 'Programs', subtitle: 'Curriculum', path: '/programs', type: 'PAGE' },
+      { title: 'Infographic', subtitle: 'Program Overview', path: '/infographic', type: 'PAGE' },
       { title: 'Contact', subtitle: 'Get in Touch', path: '/contact', type: 'PAGE' },
     ];
     
@@ -389,6 +391,19 @@ export const Layout: React.FC = () => {
                 </NavLink>
               </div>
 
+              {/* Infographic */}
+              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <h3 className="text-lg font-bold text-jjnavy mb-2">Infographic</h3>
+                <p className="text-gray-500 text-sm mb-4">프로그램 인포그래픽</p>
+                <NavLink
+                  to="/infographic"
+                  onClick={() => setIsSitemapOpen(false)}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-jjorange hover:text-jjnavy transition-colors"
+                >
+                  바로가기 <ExternalLink size={14} />
+                </NavLink>
+              </div>
+
               {/* Contact */}
               <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
                 <h3 className="text-lg font-bold text-jjnavy mb-2">Contact</h3>
@@ -496,6 +511,7 @@ export const Layout: React.FC = () => {
                 <li><NavLink to="/about" className="hover:text-white transition-colors">회사 소개</NavLink></li>
                 <li><NavLink to="/people" className="hover:text-white transition-colors">강사진 소개</NavLink></li>
                 <li><NavLink to="/programs" className="hover:text-white transition-colors">교육 프로그램</NavLink></li>
+                <li><NavLink to="/infographic" className="hover:text-white transition-colors">인포그래픽</NavLink></li>
                 <li><NavLink to="/contact" className="hover:text-white transition-colors">문의하기</NavLink></li>
               </ul>
             </div>
