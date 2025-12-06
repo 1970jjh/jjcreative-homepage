@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { BarChart3, Users, Gamepad2, CheckCircle, ArrowRight, Star, MonitorPlay, MessageCircle, FileText, Plus, Sparkles, Target, Zap, X, Maximize2 } from 'lucide-react';
+import { BarChart3, Users, Gamepad2, CheckCircle, ArrowRight, Star, MonitorPlay, MessageCircle, FileText, Plus, Sparkles, Target, Zap, X, Maximize2, Download } from 'lucide-react';
 import { Feature, Stat } from '../types';
 
 const features: Feature[] = [
@@ -70,10 +70,10 @@ const reviews = [
   { text: "전사 워크숍 프로그램, 모든 직원이 만족한 최고의 행사였습니다.", author: "교육 담당자", company: "L사" },
 ];
 
-const PDF_URL = "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/%5B%EC%A0%9C%EC%95%88%EC%84%9C%5D%20%ED%95%9C%EC%9E%A5%EC%9C%BC%EB%A1%9C%20%EB%B3%B4%EB%8A%94%202026%20JJ%20Creative%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%86%8C%20%EB%8C%80%ED%91%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8.pdf";
+const GIF_URL = "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1page.gif";
 
 export const Home: React.FC = () => {
-  const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   return (
     <div className="flex flex-col w-full">
@@ -165,10 +165,10 @@ export const Home: React.FC = () => {
               </a>
             </div>
 
-            {/* Card 3 - PDF Program Guide */}
+            {/* Card 3 - Program Guide GIF */}
             <div
-              className="bg-gradient-to-br from-amber-100 via-orange-100 to-yellow-50 rounded-3xl p-4 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300 row-span-1 lg:row-span-2 cursor-pointer"
-              onClick={() => setIsPdfModalOpen(true)}
+              className="bg-gradient-to-br from-amber-100 via-orange-100 to-yellow-50 rounded-3xl p-4 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300 row-span-1 lg:row-span-3 cursor-pointer"
+              onClick={() => setIsImageModalOpen(true)}
             >
               <div className="flex items-center justify-between mb-3">
                 <h3 className="text-amber-900 font-bold text-sm">한 눈으로 보는 기업교육 프로그램</h3>
@@ -176,19 +176,18 @@ export const Home: React.FC = () => {
                   className="w-8 h-8 bg-white/60 hover:bg-white/80 rounded-lg flex items-center justify-center transition-colors"
                   onClick={(e) => {
                     e.stopPropagation();
-                    setIsPdfModalOpen(true);
+                    setIsImageModalOpen(true);
                   }}
                 >
                   <Maximize2 size={16} className="text-amber-900" />
                 </button>
               </div>
               <div className="relative w-full h-[calc(100%-40px)] bg-white rounded-2xl overflow-hidden shadow-inner">
-                <iframe
-                  src={`${PDF_URL}#toolbar=0&navpanes=0&scrollbar=1`}
-                  className="w-full h-full border-0"
-                  title="JJ Creative 프로그램 안내서"
+                <img
+                  src={GIF_URL}
+                  alt="JJ Creative 프로그램 안내서"
+                  className="w-full h-full object-contain"
                 />
-                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-amber-100/50 via-transparent to-transparent"></div>
               </div>
               <div className="absolute bottom-3 left-0 right-0 text-center">
                 <span className="text-amber-800/60 text-xs">클릭하여 크게 보기</span>
@@ -434,11 +433,11 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* PDF Modal */}
-      {isPdfModalOpen && (
+      {/* Image Modal */}
+      {isImageModalOpen && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]"
-          onClick={() => setIsPdfModalOpen(false)}
+          onClick={() => setIsImageModalOpen(false)}
         >
           <style>{`
             @keyframes fadeIn {
@@ -458,18 +457,18 @@ export const Home: React.FC = () => {
             <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white">
               <h2 className="text-lg font-bold">한 눈으로 보는 기업교육 프로그램</h2>
               <button
-                onClick={() => setIsPdfModalOpen(false)}
+                onClick={() => setIsImageModalOpen(false)}
                 className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
               >
                 <X size={24} />
               </button>
             </div>
-            {/* PDF Viewer */}
-            <div className="w-full h-[calc(100%-72px)]">
-              <iframe
-                src={`${PDF_URL}#toolbar=1&navpanes=0&scrollbar=1&view=FitH`}
-                className="w-full h-full border-0"
-                title="JJ Creative 프로그램 안내서"
+            {/* Image Viewer */}
+            <div className="w-full h-[calc(100%-72px)] overflow-auto p-4 bg-gray-100">
+              <img
+                src={GIF_URL}
+                alt="JJ Creative 프로그램 안내서"
+                className="w-full h-auto max-w-4xl mx-auto"
               />
             </div>
           </div>
