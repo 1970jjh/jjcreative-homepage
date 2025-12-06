@@ -182,15 +182,19 @@ export const Home: React.FC = () => {
                   <Maximize2 size={16} className="text-amber-900" />
                 </button>
               </div>
-              <div className="relative w-full h-[calc(100%-40px)] bg-white rounded-2xl overflow-hidden shadow-inner">
+              <div
+                className="relative w-full h-[calc(100%-40px)] bg-white rounded-2xl overflow-y-auto shadow-inner"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <img
                   src={PROGRAM_IMAGE_URL}
                   alt="JJ Creative 프로그램 안내서"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-auto"
+                  onClick={() => setIsImageModalOpen(true)}
                 />
               </div>
-              <div className="absolute bottom-3 left-0 right-0 text-center">
-                <span className="text-amber-800/60 text-xs">클릭하여 크게 보기</span>
+              <div className="absolute bottom-3 left-0 right-0 text-center pointer-events-none">
+                <span className="text-amber-800/60 text-xs bg-amber-100/80 px-2 py-1 rounded">클릭하여 크게 보기</span>
               </div>
             </div>
 
