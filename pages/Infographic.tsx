@@ -2,6 +2,29 @@
 import React, { useState } from 'react';
 import { X, ZoomIn } from 'lucide-react';
 
+const PROGRAM_TITLES = [
+  "하이퍼포먼스 매니지먼트",
+  "PBL기반 문제해결 시뮬레이션",
+  "강점진단 및 역량 강화",
+  "고객가치창출 고객여정지도",
+  "기후변화협약 시뮬레이션",
+  "고객중심문제해결 '디자인씽킹'",
+  "소통협업 런닝맨 팀빌딩 투자의 귀재들",
+  "서바이벌 레이싱 팀빌딩",
+  "성과창출 팀장 리더십 시뮬레이션",
+  "성장마인드셋 나는 솔버 I'm SOLVER",
+  "전략 경영 시뮬레이션",
+  "워크스마트 시뮬레이션 MOVE-IT",
+  "Quinn 조직문화 개선 워크샵",
+  "협력적 커뮤니케이션",
+  "전략적사고와 의사결정",
+  "윤리적 리더십 RED TEAM",
+  "신사업 기획 '린 비즈니스 캔버스'",
+  "사내강사 양성 과정",
+  "팀워크 Build a Bridge",
+  "팀워크 Dream ILAND"
+];
+
 const INFOGRAPHIC_IMAGES = [
   {
     url: "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/%5B%EC%A0%9C%EC%95%88%EC%84%9C%5D%20%ED%95%9C%EC%9E%A5%EC%9C%BC%EB%A1%9C%20%EB%B3%B4%EB%8A%94%202026%20JJ%20Creative%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%86%8C%20%EB%8C%80%ED%91%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8/2026%20%EA%B8%B0%EC%97%85%EA%B5%90%EC%9C%A1.PNG",
@@ -14,7 +37,7 @@ const INFOGRAPHIC_IMAGES = [
   // 1P 폴더 이미지 (3.PNG ~ 22.PNG)
   ...Array.from({ length: 20 }, (_, i) => ({
     url: `https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1P/${i + 3}.PNG`,
-    title: `프로그램 상세 ${i + 1}`
+    title: PROGRAM_TITLES[i]
   }))
 ];
 
