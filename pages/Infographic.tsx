@@ -51,11 +51,11 @@ export const Infographic: React.FC = () => {
                 className="bg-white rounded-2xl shadow-lg overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow"
                 onClick={() => setSelectedImage(image.url)}
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative overflow-hidden">
                   <img
                     src={image.url}
                     alt={image.title}
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-auto"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 rounded-full p-3">
