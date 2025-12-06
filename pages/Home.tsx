@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { BarChart3, Users, Gamepad2, CheckCircle, ArrowRight, Star, MonitorPlay, MessageCircle, FileText, Plus, Sparkles, Target, Zap, X, Maximize2, Download } from 'lucide-react';
 import { Feature, Stat } from '../types';
@@ -73,8 +73,75 @@ const reviews = [
 const PROGRAM_GIF_URL = "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1gif.gif";
 const PROGRAM_POPUP_URL = "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1program.jpg";
 
+// 교육담당자 후기 9개
+const educationReviews = [
+  {
+    text: "JJ Creative의 리더십 교육은 단순 이론이 아니라 실제 현장에서 바로 적용할 수 있는 실전 노하우를 전수해주셨습니다. 교육 후 팀장들의 코칭 스킬이 눈에 띄게 향상되었어요.",
+    author: "박영희",
+    position: "인재개발팀 차장",
+    company: "삼성SDI"
+  },
+  {
+    text: "게이미피케이션 기반 팀빌딩 프로그램이 정말 인상적이었습니다. MZ세대 직원들의 참여도가 역대 최고였고, 부서 간 소통이 확연히 개선되었습니다.",
+    author: "김준혁",
+    position: "HR팀 과장",
+    company: "현대자동차"
+  },
+  {
+    text: "AI 업무 활용 교육을 통해 전 직원의 업무 생산성이 30% 이상 향상되었습니다. 특히 ChatGPT, Copilot 실습이 실무에 큰 도움이 되었어요.",
+    author: "이수진",
+    position: "교육기획팀 팀장",
+    company: "SK하이닉스"
+  },
+  {
+    text: "전략 경영 시뮬레이션 프로그램으로 임원진의 의사결정 역량이 크게 성장했습니다. 실제 경영 상황을 체험하며 배우니 몰입도가 남달랐어요.",
+    author: "정민우",
+    position: "경영지원팀 부장",
+    company: "LG에너지솔루션"
+  },
+  {
+    text: "신입사원 온보딩 프로그램이 체계적이고 재미있어서 신입들의 조기 적응에 큰 도움이 되었습니다. 이직률이 작년 대비 40% 감소했어요.",
+    author: "한지영",
+    position: "채용팀 매니저",
+    company: "카카오뱅크"
+  },
+  {
+    text: "협업 커뮤니케이션 교육 후 부서 간 갈등이 현저히 줄었습니다. 특히 '긍정적 대화 vs 부정적 대화' 실습이 임직원들에게 큰 깨달음을 주었어요.",
+    author: "오성민",
+    position: "조직문화팀 차장",
+    company: "네이버"
+  },
+  {
+    text: "문제해결 시뮬레이션 교육으로 R&D 팀의 창의적 사고력이 향상되었습니다. 실제 프로젝트에서 혁신적인 아이디어가 쏟아지고 있어요.",
+    author: "최다은",
+    position: "기술교육팀 과장",
+    company: "포스코"
+  },
+  {
+    text: "환상의 섬 팀빌딩 프로그램은 역대 최고의 워크숍이었습니다. 직원들이 지금도 그때 이야기를 하며 팀워크를 다지고 있어요.",
+    author: "송재현",
+    position: "총무팀 팀장",
+    company: "CJ제일제당"
+  },
+  {
+    text: "하이퍼포먼스 매니지먼트 교육으로 성과 면담의 질이 완전히 달라졌습니다. 관리자들이 자신감을 갖고 피드백을 주고받게 되었어요.",
+    author: "윤서아",
+    position: "HRD팀 대리",
+    company: "롯데케미칼"
+  }
+];
+
 export const Home: React.FC = () => {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+
+  // 3초마다 교육후기 자동 전환
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentReviewIndex((prev) => (prev + 1) % educationReviews.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="flex flex-col w-full">
@@ -216,58 +283,69 @@ export const Home: React.FC = () => {
               </a>
             </div>
 
-            {/* Card 5 - Dark Feature Card */}
-            <div className="bg-zinc-900 rounded-3xl p-6 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
-              <div className="relative z-10 h-full min-h-[200px] flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <Target className="text-jjorange" size={24} />
-                    <span className="text-white font-bold">맞춤형 교육 설계</span>
-                  </div>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    AI 기반 조직 진단으로 100% 커스터마이징된 교육 솔루션을 제공합니다.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between mt-6">
-                  <span className="text-3xl font-bold text-white">4.9<span className="text-lg text-gray-500">/5.0</span></span>
-                  <span className="text-gray-500 text-sm">교육 만족도</span>
-                </div>
+            {/* Card 5 - YouTube Video 2 */}
+            <div className="bg-black rounded-3xl overflow-hidden relative group hover:scale-[1.02] transition-transform duration-300">
+              <div className="w-full h-full min-h-[280px]">
+                <iframe
+                  src="https://www.youtube.com/embed/4XTPnf4B1SU"
+                  title="JJ Creative 교육 영상"
+                  className="w-full h-full min-h-[280px]"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
-              <a
-                href="https://form.naver.com/response/S1p9qf7_I9qBZ96COOdSzA"
-                target="_blank"
-                rel="noreferrer"
-                className="absolute bottom-6 right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
-              >
-                <Plus size={20} className="text-white/60" />
-              </a>
             </div>
 
-            {/* Card 6 - Person Card 2 */}
-            <div className="bg-gray-200 rounded-3xl overflow-hidden relative group hover:scale-[1.02] transition-transform duration-300">
-              <img
-                src={testimonials[2].image}
-                alt={testimonials[2].author}
-                className="w-full h-full object-cover absolute inset-0"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-              <div className="relative z-10 h-full min-h-[280px] flex flex-col justify-end p-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-white font-bold">{testimonials[2].author}</span>
-                  <span className="text-white/60 text-sm">{testimonials[2].position}</span>
+            {/* Card 6 - Rotating Education Reviews */}
+            <div className="bg-zinc-900 rounded-3xl p-6 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
+              <style>{`
+                @keyframes reviewFadeIn {
+                  0% { opacity: 0; transform: translateY(10px); }
+                  100% { opacity: 1; transform: translateY(0); }
+                }
+                .review-animate {
+                  animation: reviewFadeIn 0.5s ease-out;
+                }
+              `}</style>
+              <div className="relative z-10 h-full min-h-[280px] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-jjorange font-bold text-sm">교육담당자 후기</span>
+                    <div className="flex gap-0.5">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <Star key={s} size={14} fill="#F47C20" stroke="none" />
+                      ))}
+                    </div>
+                  </div>
+                  <div key={currentReviewIndex} className="review-animate">
+                    <p className="text-white text-sm leading-relaxed mb-4 line-clamp-4">
+                      "{educationReviews[currentReviewIndex].text}"
+                    </p>
+                  </div>
                 </div>
-                <div className="bg-white/10 backdrop-blur-md rounded-xl px-3 py-1 inline-flex items-center gap-2 w-fit">
-                  <span className="text-white text-sm font-medium">{testimonials[2].company}</span>
+                <div className="border-t border-white/10 pt-4">
+                  <div key={`author-${currentReviewIndex}`} className="review-animate">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-white font-bold text-sm">{educationReviews[currentReviewIndex].author}</span>
+                        <span className="text-gray-500 text-xs ml-2">{educationReviews[currentReviewIndex].position}</span>
+                      </div>
+                      <span className="text-jjorange text-xs font-medium bg-jjorange/10 px-2 py-1 rounded">{educationReviews[currentReviewIndex].company}</span>
+                    </div>
+                  </div>
+                  <div className="flex gap-1 mt-3 justify-center">
+                    {educationReviews.map((_, idx) => (
+                      <div
+                        key={idx}
+                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                          idx === currentReviewIndex ? 'bg-jjorange w-4' : 'bg-gray-600'
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
-              <a
-                href="https://blog.naver.com/wofyrhd"
-                target="_blank"
-                rel="noreferrer"
-                className="absolute bottom-6 right-6 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
-              >
-                <Plus size={20} className="text-white/80" />
-              </a>
             </div>
 
           </div>
