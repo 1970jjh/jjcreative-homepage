@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Target, Lightbulb, Compass, Award, Gamepad2, Users, BrainCircuit, Rocket, MonitorPlay } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export const About: React.FC = () => {
   return (
@@ -102,11 +103,46 @@ export const About: React.FC = () => {
               <p className="text-gray-600 mb-8 leading-relaxed">
                 JJ Creative 교육연구소는 기업 교육의 전반적인 영역에서 전문적인 솔루션을 제공합니다.
               </p>
-              <img 
-                src="https://picsum.photos/seed/business_meeting/800/800" 
-                alt="Consulting" 
-                className="rounded-lg shadow-lg w-full"
-              />
+              {/* 기업교육 with AI 애니메이션 */}
+              <div className="bg-gradient-to-br from-jjnavy to-slate-900 p-8 rounded-2xl shadow-2xl border border-gray-700 h-[300px] flex items-center justify-center relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-jjorange opacity-10 rounded-full blur-3xl -mr-32 -mt-32 animate-pulse group-hover:opacity-20 transition-opacity duration-1000"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500 opacity-10 rounded-full blur-3xl -ml-32 -mb-32 animate-pulse group-hover:opacity-20 transition-opacity duration-1000" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+                  className="relative z-10 text-center flex flex-col items-center"
+                >
+                  <motion.span
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="text-white text-2xl md:text-4xl font-extrabold tracking-tight mb-2 block"
+                  >
+                    기업교육
+                  </motion.span>
+                  <motion.span
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6, duration: 0.6, type: "spring" }}
+                    className="text-jjorange text-3xl md:text-5xl font-black tracking-tighter block"
+                    style={{ textShadow: "0 4px 20px rgba(244, 124, 32, 0.5)" }}
+                  >
+                    with AI
+                  </motion.span>
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "60px" }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 1, duration: 0.8 }}
+                    className="h-1 bg-white mt-6 rounded-full"
+                  />
+                </motion.div>
+              </div>
             </div>
             <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="p-6 border border-gray-100 rounded-lg hover:shadow-md transition-shadow">
