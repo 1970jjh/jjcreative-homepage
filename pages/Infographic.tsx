@@ -43,29 +43,28 @@ export const Infographic: React.FC = () => {
 
       {/* Infographic Images */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {INFOGRAPHIC_IMAGES.map((image, index) => (
               <div
                 key={index}
                 className="bg-white rounded-2xl shadow-lg overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow"
                 onClick={() => setSelectedImage(image.url)}
               >
-                <div className="relative">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={image.url}
                     alt={image.title}
-                    className="w-full h-auto"
+                    className="w-full h-full object-cover object-top"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 rounded-full p-4">
-                      <ZoomIn size={32} className="text-jjnavy" />
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 rounded-full p-3">
+                      <ZoomIn size={24} className="text-jjnavy" />
                     </div>
                   </div>
                 </div>
-                <div className="p-4 text-center">
-                  <h3 className="text-lg font-bold text-jjnavy">{image.title}</h3>
-                  <p className="text-sm text-gray-500 mt-1">클릭하여 크게 보기</p>
+                <div className="p-3 text-center">
+                  <h3 className="text-sm font-bold text-jjnavy">{image.title}</h3>
                 </div>
               </div>
             ))}
@@ -86,13 +85,13 @@ export const Infographic: React.FC = () => {
             <X size={28} className="text-white" />
           </button>
           <div
-            className="relative w-[95vw] h-[90vh] flex items-center justify-center"
+            className="relative w-[95vw] h-[90vh] overflow-auto bg-white rounded-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={selectedImage}
               alt="Infographic"
-              className="max-w-full max-h-full object-contain"
+              className="w-full h-auto"
             />
           </div>
         </div>
