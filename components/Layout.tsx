@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Phone, Mail, MapPin, ExternalLink, Search } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin, ExternalLink, Search, LayoutGrid } from 'lucide-react';
 import { NavItem } from '../types';
 import { programs } from '../data/programsData';
 
@@ -16,6 +16,7 @@ const navItems: NavItem[] = [
 export const Layout: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isSitemapOpen, setIsSitemapOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const { pathname } = useLocation();
@@ -36,6 +37,7 @@ export const Layout: React.FC = () => {
     window.scrollTo(0, 0);
     setIsMobileMenuOpen(false);
     setIsSearchOpen(false);
+    setIsSitemapOpen(false);
     setSearchTerm("");
   }, [pathname]);
 
@@ -137,29 +139,49 @@ export const Layout: React.FC = () => {
               ))}
               
               {/* Search Icon (Desktop) */}
-              <button 
+              <button
                 onClick={() => setIsSearchOpen(true)}
                 className={`p-2 rounded-full transition-colors ${
-                  isScrolled || !isHome 
-                    ? 'text-slate-600 hover:text-jjnavy hover:bg-slate-100' 
+                  isScrolled || !isHome
+                    ? 'text-slate-600 hover:text-jjnavy hover:bg-slate-100'
                     : 'text-white/90 hover:text-white hover:bg-white/10'
                 }`}
                 aria-label="Search"
               >
                 <Search size={20} />
               </button>
+
+              {/* Sitemap Icon (Desktop) */}
+              <button
+                onClick={() => setIsSitemapOpen(true)}
+                className={`p-2 rounded-full transition-colors ${
+                  isScrolled || !isHome
+                    ? 'text-slate-600 hover:text-jjnavy hover:bg-slate-100'
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
+                }`}
+                aria-label="Sitemap"
+              >
+                <LayoutGrid size={20} />
+              </button>
             </nav>
 
             {/* Mobile Actions */}
             <div className="flex md:hidden items-center gap-2">
-              <button 
+              <button
                 onClick={() => setIsSearchOpen(true)}
                 className={`p-2 ${isScrolled || !isHome ? 'text-slate-900' : 'text-white'}`}
                 aria-label="Search"
               >
                 <Search size={24} />
               </button>
-              <button 
+              <button
+                onClick={() => setIsSitemapOpen(true)}
+                className={`p-2 ${isScrolled || !isHome ? 'text-slate-900' : 'text-white'}`}
+                aria-label="Sitemap"
+              >
+                <LayoutGrid size={24} />
+              </button>
+              <button
                 className={`p-2 ${isScrolled || !isHome ? 'text-slate-900' : 'text-white'}`}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
@@ -255,6 +277,143 @@ export const Layout: React.FC = () => {
                    </div>
                  </div>
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Sitemap Modal */}
+      {isSitemapOpen && (
+        <div className="fixed inset-0 z-[60] bg-white overflow-y-auto animate-fade-in">
+          <div className="max-w-6xl mx-auto px-4 sm:px-8 py-8">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-12">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-jjnavy rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                  JJ
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-jjnavy">사이트맵</h2>
+                  <p className="text-sm text-gray-500">전체 페이지 바로가기</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsSitemapOpen(false)}
+                className="p-3 rounded-full hover:bg-gray-100 transition-colors"
+              >
+                <X size={28} className="text-gray-600" />
+              </button>
+            </div>
+
+            {/* Sitemap Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Home */}
+              <div className="bg-gradient-to-br from-jjnavy to-jjnavy/80 rounded-2xl p-6 text-white">
+                <h3 className="text-lg font-bold mb-2">Home</h3>
+                <p className="text-white/70 text-sm mb-4">메인 페이지</p>
+                <NavLink
+                  to="/"
+                  onClick={() => setIsSitemapOpen(false)}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-jjorange hover:text-white transition-colors"
+                >
+                  바로가기 <ExternalLink size={14} />
+                </NavLink>
+              </div>
+
+              {/* Company */}
+              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <h3 className="text-lg font-bold text-jjnavy mb-2">Company</h3>
+                <p className="text-gray-500 text-sm mb-4">JJ Creative 교육연구소 소개</p>
+                <NavLink
+                  to="/about"
+                  onClick={() => setIsSitemapOpen(false)}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-jjorange hover:text-jjnavy transition-colors"
+                >
+                  바로가기 <ExternalLink size={14} />
+                </NavLink>
+              </div>
+
+              {/* People */}
+              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <h3 className="text-lg font-bold text-jjnavy mb-2">People</h3>
+                <p className="text-gray-500 text-sm mb-4">전문 강사진 소개</p>
+                <NavLink
+                  to="/people"
+                  onClick={() => setIsSitemapOpen(false)}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-jjorange hover:text-jjnavy transition-colors"
+                >
+                  바로가기 <ExternalLink size={14} />
+                </NavLink>
+              </div>
+
+              {/* Programs */}
+              <div className="bg-gradient-to-br from-jjorange to-jjorange/80 rounded-2xl p-6 text-white md:col-span-2 lg:col-span-2">
+                <h3 className="text-lg font-bold mb-2">Programs</h3>
+                <p className="text-white/80 text-sm mb-4">교육 프로그램 안내</p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
+                  {programs.slice(0, 6).map((program) => (
+                    <NavLink
+                      key={program.id}
+                      to={`/programs?programId=${program.id}`}
+                      onClick={() => setIsSitemapOpen(false)}
+                      className="text-xs bg-white/20 hover:bg-white/30 rounded-lg px-3 py-2 transition-colors truncate"
+                    >
+                      {program.title}
+                    </NavLink>
+                  ))}
+                </div>
+                <NavLink
+                  to="/programs"
+                  onClick={() => setIsSitemapOpen(false)}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-jjnavy transition-colors"
+                >
+                  전체 프로그램 보기 <ExternalLink size={14} />
+                </NavLink>
+              </div>
+
+              {/* Contact */}
+              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <h3 className="text-lg font-bold text-jjnavy mb-2">Contact</h3>
+                <p className="text-gray-500 text-sm mb-4">문의 및 상담 신청</p>
+                <NavLink
+                  to="/contact"
+                  onClick={() => setIsSitemapOpen(false)}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-jjorange hover:text-jjnavy transition-colors"
+                >
+                  바로가기 <ExternalLink size={14} />
+                </NavLink>
+              </div>
+            </div>
+
+            {/* External Links */}
+            <div className="mt-12 pt-8 border-t border-gray-200">
+              <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">외부 링크</h4>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="https://blog.naver.com/wofyrhd"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-[#03C75A] hover:bg-[#02b351] text-white rounded-lg text-sm font-bold transition-all"
+                >
+                  네이버 블로그 <ExternalLink size={14} />
+                </a>
+                <a
+                  href="https://notebooklm.google.com/notebook/329d933e-d7b8-4981-94f3-b76bdd6142eb"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-[#8B5CF6] hover:bg-[#7c3aed] text-white rounded-lg text-sm font-bold transition-all"
+                >
+                  AI 챗봇 <ExternalLink size={14} />
+                </a>
+                <a
+                  href="https://form.naver.com/response/S1p9qf7_I9qBZ96COOdSzA"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-[#F59E0B] hover:bg-[#d97706] text-white rounded-lg text-sm font-bold transition-all"
+                >
+                  문의하기 <ExternalLink size={14} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
