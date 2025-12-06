@@ -25,7 +25,7 @@ const experts: Expert[] = [
       "게이미피케이션 (런닝맨, 서바이벌)",
       "창의적 문제해결 (Design Thinking)"
     ],
-    image: "https://1970jjh.github.io/jjcreative-images/jeon_jae_hyun.jpg"
+    image: "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/JJH.png"
   },
   {
     name: "양지아 소장",
