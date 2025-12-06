@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { ProcessStep } from '../types';
 
 const steps: ProcessStep[] = [
@@ -91,50 +90,57 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-            {/* Right: Animated Corporate Education Text (Replaces Form) */}
-            <div className="bg-gradient-to-br from-jjnavy to-slate-900 p-8 md:p-10 rounded-2xl shadow-2xl border border-gray-700 h-[400px] flex items-center justify-center relative overflow-hidden group">
-               {/* Background decoration */}
-               <div className="absolute top-0 right-0 w-64 h-64 bg-jjorange opacity-10 rounded-full blur-3xl -mr-32 -mt-32 animate-pulse group-hover:opacity-20 transition-opacity duration-1000"></div>
-               <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500 opacity-10 rounded-full blur-3xl -ml-32 -mb-32 animate-pulse group-hover:opacity-20 transition-opacity duration-1000" style={{ animationDelay: '1s' }}></div>
-               
-               {/* Animated Particles/Grid Effect (Optional simple overlay) */}
-               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-
-               <motion.div
-                 initial={{ opacity: 0, scale: 0.8 }}
-                 animate={{ opacity: 1, scale: 1 }}
-                 transition={{ 
-                   duration: 0.8,
-                   type: "spring",
-                   bounce: 0.4
-                 }}
-                 className="relative z-10 text-center flex flex-col items-center"
-               >
-                 <motion.span
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.2, duration: 0.6 }}
-                    className="text-white text-3xl md:text-5xl font-extrabold tracking-tight mb-2 block"
-                 >
-                   기업교육
-                 </motion.span>
-                 <motion.span
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.6, duration: 0.6, type: "spring" }}
-                    className="text-jjorange text-4xl md:text-6xl font-black tracking-tighter block"
-                    style={{ textShadow: "0 4px 20px rgba(244, 124, 32, 0.5)" }}
-                 >
-                   with AI
-                 </motion.span>
-                 
-                 <motion.div 
-                    initial={{ width: 0 }}
-                    animate={{ width: "60px" }}
-                    transition={{ delay: 1, duration: 0.8 }}
-                    className="h-1 bg-white mt-6 rounded-full"
-                 />
-               </motion.div>
+            {/* Right: Contact Form */}
+            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg">
+              <h3 className="text-2xl font-bold text-jjnavy mb-6">문의하기</h3>
+              <form className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">회사명</label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-jjorange focus:border-transparent outline-none transition-all"
+                    placeholder="회사명을 입력해주세요"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">이름</label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-jjorange focus:border-transparent outline-none transition-all"
+                    placeholder="담당자 성함을 입력해주세요"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">이메일</label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-jjorange focus:border-transparent outline-none transition-all"
+                    placeholder="이메일 주소를 입력해주세요"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">연락처</label>
+                  <input
+                    type="tel"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-jjorange focus:border-transparent outline-none transition-all"
+                    placeholder="연락처를 입력해주세요"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">문의내용</label>
+                  <textarea
+                    rows={4}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-jjorange focus:border-transparent outline-none transition-all resize-none"
+                    placeholder="문의 내용을 입력해주세요"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-jjorange hover:bg-jjorange/90 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                >
+                  문의하기
+                </button>
+              </form>
             </div>
           </div>
         </div>
