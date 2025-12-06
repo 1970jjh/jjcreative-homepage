@@ -282,28 +282,53 @@ export const Layout: React.FC = () => {
         </div>
       )}
 
-      {/* Sitemap Modal */}
+      {/* Sitemap Modal - Curtain Style */}
       {isSitemapOpen && (
-        <div className="fixed inset-0 z-[60] bg-white overflow-y-auto animate-fade-in">
-          <div className="max-w-6xl mx-auto px-4 sm:px-8 py-8">
-            {/* Header */}
-            <div className="flex items-center justify-between mb-12">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-jjnavy rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                  JJ
+        <>
+          {/* Background Overlay */}
+          <div
+            className="fixed inset-0 z-[59] bg-black/50 backdrop-blur-sm animate-[fadeIn_0.3s_ease-out]"
+            onClick={() => setIsSitemapOpen(false)}
+          />
+
+          {/* Curtain Panel */}
+          <div className="fixed inset-x-0 top-0 z-[60] bg-white shadow-2xl overflow-y-auto max-h-[90vh] animate-[slideDown_0.4s_ease-out]">
+            <style>{`
+              @keyframes slideDown {
+                from {
+                  transform: translateY(-100%);
+                  opacity: 0;
+                }
+                to {
+                  transform: translateY(0);
+                  opacity: 1;
+                }
+              }
+              @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+              }
+            `}</style>
+
+            <div className="max-w-6xl mx-auto px-4 sm:px-8 py-8">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-jjnavy rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                    JJ
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-jjnavy">사이트맵</h2>
+                    <p className="text-sm text-gray-500">전체 페이지 바로가기</p>
+                  </div>
                 </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-jjnavy">사이트맵</h2>
-                  <p className="text-sm text-gray-500">전체 페이지 바로가기</p>
-                </div>
+                <button
+                  onClick={() => setIsSitemapOpen(false)}
+                  className="p-3 rounded-full hover:bg-gray-100 transition-colors group"
+                >
+                  <X size={28} className="text-gray-400 group-hover:text-gray-600 transition-colors" />
+                </button>
               </div>
-              <button
-                onClick={() => setIsSitemapOpen(false)}
-                className="p-3 rounded-full hover:bg-gray-100 transition-colors"
-              >
-                <X size={28} className="text-gray-600" />
-              </button>
-            </div>
 
             {/* Sitemap Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -417,6 +442,7 @@ export const Layout: React.FC = () => {
             </div>
           </div>
         </div>
+        </>
       )}
 
       {/* Main Content Outlet */}
