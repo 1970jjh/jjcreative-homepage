@@ -71,6 +71,7 @@ const reviews = [
 ];
 
 const PROGRAM_GIF_URL = "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1page.gif";
+const PROGRAM_POPUP_URL = "https://raw.githubusercontent.com/1970jjh/jjcreative-images/main/1program.jpg";
 
 export const Home: React.FC = () => {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
@@ -470,7 +471,7 @@ export const Home: React.FC = () => {
             {/* Image Viewer */}
             <div className="w-full h-[calc(100%-72px)] overflow-auto p-4 bg-gray-100">
               <img
-                src={PROGRAM_GIF_URL}
+                src={PROGRAM_POPUP_URL}
                 alt="JJ Creative 프로그램 안내서"
                 className="w-full h-auto max-w-4xl mx-auto"
               />
