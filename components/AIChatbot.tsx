@@ -256,7 +256,7 @@ export const AIChatbot: React.FC = () => {
 
       {/* Chat Window - Right Bottom, responsive for mobile */}
       {isOpen && (
-        <div className="fixed right-2 bottom-2 sm:right-6 sm:bottom-6 z-50 w-[calc(100vw-16px)] sm:w-[380px] h-[calc(100vh-100px)] sm:h-[680px] max-h-[500px] sm:max-h-[680px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-[scaleIn_0.3s_ease-out] border border-gray-200">
+        <div className="fixed right-2 bottom-2 sm:right-6 sm:bottom-6 z-50 w-[calc(100vw-16px)] max-w-[340px] sm:max-w-[380px] sm:w-[380px] h-[60vh] sm:h-[680px] max-h-[380px] sm:max-h-[680px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-[scaleIn_0.3s_ease-out] border border-gray-200">
           <style>{`
             @keyframes scaleIn {
               from { transform: scale(0.8); opacity: 0; }
