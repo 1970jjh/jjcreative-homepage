@@ -241,7 +241,7 @@ export const AIChatbot: React.FC = () => {
       {/* Chat Button - Right Bottom */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed right-6 bottom-6 z-50 w-14 h-14 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group ${isOpen ? 'scale-0' : 'scale-100'}`}
+        className={`fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-50 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group ${isOpen ? 'scale-0' : 'scale-100'}`}
         aria-label="AI Helper"
       >
         <Bot size={26} />
@@ -254,9 +254,9 @@ export const AIChatbot: React.FC = () => {
         </div>
       </button>
 
-      {/* Chat Window - Right Bottom, 30% taller */}
+      {/* Chat Window - Right Bottom, responsive for mobile */}
       {isOpen && (
-        <div className="fixed right-6 bottom-6 z-50 w-[380px] h-[680px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-[scaleIn_0.3s_ease-out] border border-gray-200">
+        <div className="fixed right-2 bottom-2 sm:right-6 sm:bottom-6 z-50 w-[calc(100vw-16px)] sm:w-[380px] h-[calc(100vh-100px)] sm:h-[680px] max-h-[500px] sm:max-h-[680px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-[scaleIn_0.3s_ease-out] border border-gray-200">
           <style>{`
             @keyframes scaleIn {
               from { transform: scale(0.8); opacity: 0; }
@@ -265,14 +265,15 @@ export const AIChatbot: React.FC = () => {
           `}</style>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                <Sparkles size={20} />
+          <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-3 sm:p-4 flex items-center justify-between">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center">
+                <Sparkles size={18} className="sm:hidden" />
+                <Sparkles size={20} className="hidden sm:block" />
               </div>
               <div>
-                <h3 className="font-bold">JJ AI Helper</h3>
-                <p className="text-xs text-white/80">교육 상담 AI 어시스턴트</p>
+                <h3 className="font-bold text-sm sm:text-base">JJ AI Helper</h3>
+                <p className="text-[10px] sm:text-xs text-white/80">교육 상담 AI 어시스턴트</p>
               </div>
             </div>
             <button
@@ -284,7 +285,7 @@ export const AIChatbot: React.FC = () => {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+          <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-gray-50">
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -326,23 +327,23 @@ export const AIChatbot: React.FC = () => {
           </div>
 
           {/* Input */}
-          <div className="p-4 bg-white border-t border-gray-100">
+          <div className="p-3 sm:p-4 bg-white border-t border-gray-100">
             <div className="flex gap-2 items-end">
               <textarea
                 ref={textareaRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="메시지를 입력하세요... (Shift+Enter: 줄바꿈)"
+                placeholder="메시지를 입력하세요..."
                 rows={1}
-                className="flex-1 px-4 py-3 bg-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all resize-none overflow-hidden"
+                className="flex-1 px-3 sm:px-4 py-2 sm:py-3 bg-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all resize-none overflow-hidden"
                 disabled={isLoading}
-                style={{ minHeight: '44px', maxHeight: '120px' }}
+                style={{ minHeight: '40px', maxHeight: '100px' }}
               />
               <button
                 onClick={sendMessage}
                 disabled={!input.trim() || isLoading}
-                className="px-4 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
+                className="px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
               >
                 <Send size={18} />
               </button>
